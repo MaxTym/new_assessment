@@ -1,3 +1,6 @@
+# connecting to an existing database.
+# if database does not exist, then it will be created
+# creating a table PEOPLE
 sub create_table{
     use DBI;
     use strict;
@@ -8,7 +11,6 @@ sub create_table{
     my $password = "";
     my $dbh = DBI->connect($dsn, $userid, $password, { RaiseError => 1 })
                           or die $DBI::errstr;
-
     my $stmt = qq(CREATE TABLE if not exists PEOPLE
           (ID INT PRIMARY KEY     NOT NULL,
            FIRST_NAME           TEXT,
@@ -18,6 +20,8 @@ sub create_table{
     $dbh->disconnect();
 }
 
+# inserting records in PEOPLE table
+# if pk duplicates -> ignore
 sub populate_table{
     use DBI;
     use strict;
@@ -28,7 +32,6 @@ sub populate_table{
     my $password = "";
     my $dbh = DBI->connect($dsn, $userid, $password, { RaiseError => 1 })
                           or die $DBI::errstr;
-
     my $stmt = qq(INSERT OR IGNORE INTO PEOPLE (ID,FIRST_NAME,LAST_NAME,HOME)
           VALUES (1, 'Rose', 'Tyler', 'Earth'));
     my $rv = $dbh->do($stmt) or die $DBI::errstr;
@@ -65,6 +68,7 @@ sub populate_table{
     $dbh->disconnect();
 }
 
+# fetch and display records from PEOPLE table
 sub print_table{
     use DBI;
     use strict;
@@ -104,6 +108,5 @@ sub main{
         }
     }
 }
-
 
 main();
