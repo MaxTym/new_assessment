@@ -1,0 +1,49 @@
+.column-left{
+    float: left; width: 33%;
+}
+
+.column-right{
+    float: right; width: 33%;
+}
+
+.column-center{
+    display: inline-block; width: 33%;
+}
+
+.button{
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.container-fluid{
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+}
+
+.button:hover {
+    background-color: #3e8e41
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.button1{
+    font-size: 10px;
+    box-shadow: none;
+}
